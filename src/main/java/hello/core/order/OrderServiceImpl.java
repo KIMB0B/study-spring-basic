@@ -1,10 +1,8 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -22,5 +20,10 @@ public class OrderServiceImpl implements OrderService {
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice);
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    // 스프링의 @Configuration 싱글톤 테스트를 위한 Getter
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
