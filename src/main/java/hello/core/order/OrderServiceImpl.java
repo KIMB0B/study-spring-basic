@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -18,6 +19,11 @@ public class OrderServiceImpl implements OrderService {
             MemberRepository memberRepository,
             /* @Qualifier("mainDiscountPolicy") 추가 시 해당 Qualifier를 지정한 FixDiscountPolicy로 지정됨
             * 추가하지 않을 시 @Primary를 지정한 RateDiscountPolicy로 지정됨 */
+
+            /* Annotation을 추가하면서 MainDiscountPolicy를 RateDiscountPolicy로 변경함
+            * Qualifier 내의 빈 이름은 string이라 오류가 생겨도 찾기 힘들어 Annotation으로 따로 만듦
+            * @MainDiscountPolicy를 추가하면 RateDiscountPolicy가 적용되고 자세한 내용은 annotation/MainDiscountPolicy */
+            @MainDiscountPolicy
             DiscountPolicy discountPolicy
     ) {
         this.memberRepository = memberRepository;
