@@ -1,4 +1,8 @@
 package hello.core.order;
+
+import lombok.Getter;
+
+@Getter
 public class Order {
     private final Long memberId;
     private final String itemName;
@@ -13,18 +17,18 @@ public class Order {
     public int calculatePrice() {
         return itemPrice - discountPrice;
     }
-    public Long getMemberId() {
-        return memberId;
-    }
-    public String getItemName() {
-        return itemName;
-    }
-    public int getItemPrice() {
-        return itemPrice;
-    }
-    public int getDiscountPrice() {
-        return discountPrice;
-    }
+//    public Long getMemberId() {
+//        return memberId;
+//    }
+//    public String getItemName() {
+//        return itemName;
+//    }
+//    public int getItemPrice() {
+//        return itemPrice;
+//    }
+//    public int getDiscountPrice() {
+//        return discountPrice;
+//    }
     @Override
     public String toString() {
         return "Order{" +
